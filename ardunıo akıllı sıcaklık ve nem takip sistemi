@@ -1,0 +1,52 @@
+# ardun-o
+Smart Temperature and Humidity Monitor
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+#include <DHT.h>
+
+#define DHTPIN 2           // DHT11 data pin
+#define DHTTYPE DHT11
+#define BUZZER 7           // Buzzer pin
+
+DHT dht(DHTPIN, DHTTYPE);
+LiquidCrystal_I2C lcd(0x27, 16, 2); // LCD I2C adresi 0x27 olabilir
+
+void setup() {
+  lcd.begin();
+  lcd.backlight();
+  dht.begin();
+  pinMode(BUZZER, OUTPUT);
+  digitalWrite(BUZZER, LOW);
+  lcd.print("Sistem Basladi");
+  delay(2000);
+  lcd.clear();
+}
+
+void loop() {
+  float temp = dht.readTemperature();
+  float humidity = dht.readHumidity();
+
+  if (isnan(temp) || isnan(humidity)) {
+    lcd.setCursor(0, 0);
+    lcd.print("Sensor hatasi!");
+    return;
+  }
+
+  lcd.setCursor(0, 0);
+  lcd.print("Sicaklik: ");
+  lcd.print(temp);
+  lcd.print("C ");
+
+  lcd.setCursor(0, 1);
+  lcd.print("Nem: ");
+  lcd.print(humidity);
+  lcd.print("%   ");
+
+  if (temp > 30) {
+    digitalWrite(BUZZER, HIGH);
+  } else {
+    digitalWrite(BUZZER, LOW);
+  }
+
+  delay(2000);
+}
