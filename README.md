@@ -1,3 +1,5 @@
+Arduino projesi: "Akıllı Sıcaklık ve Nem Takip Sistemi". Bu proje bir DHT11 sensörü ile ortam sıcaklığı ve nemi ölçer, verileri bir LCD ekrana yazdırır ve sıcaklık belirli bir eşik değeri geçerse buzzer ile uyarı verir.
+
 Kullanılan Malzemeler:
 
 Arduino Uno
