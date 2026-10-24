@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Kodla · Arduino Eğitimleri</title>
+  <meta name="description" content="Kodla: Arduino Uno ve Nano için 42 adım adım bölümden oluşan STEM eğitim platformu. Malzeme listeleri, pin-pin bağlantı şemaları ve kopyala-yapıştır kodlar.">
+  <meta name="theme-color" content="#F6F3EC">
+  <link rel="icon" type="image/png" href="assets/img/kodla-ikon.png">
+  <link rel="apple-touch-icon" href="assets/img/kodla-ikon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <button class="icon-btn menu-btn" data-action="menu" aria-label="Menu">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+
+      <a class="logo" href="#/" aria-label="Kodla">
+        <img class="logo-img" src="assets/img/kodla-logo.png" alt="Kodla" width="76" height="38">
+        <small class="logo-sub" lang="en">Arduino Uno &amp; Nano</small>
+      </a>
+
+      <div class="search" role="combobox" aria-haspopup="listbox">
+        <svg class="ico search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+        <input id="search" type="search" autocomplete="off" spellcheck="false" aria-controls="results" aria-expanded="false" aria-label="Search">
+        <kbd class="search-kbd">/</kbd>
+        <button id="search-clear" class="search-clear" aria-label="Clear">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+        <div id="results" class="results glass" role="listbox"></div>
+      </div>
+
+      <div class="top-right">
+        <div class="progress-pill" title="">
+          <span data-i18n="progress"></span>
+          <span class="progress-track"><span id="progress-fill"></span></span>
+          <b id="progress-text"></b>
+        </div>
+        <div class="lang" role="group" aria-label="Language">
+          <button class="lang-btn" data-lang="tr">TR</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+      </div>
+    </div>
+    <div class="cats-wrap">
+      <nav id="cats" class="cats" aria-label="Categories"></nav>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" aria-label="Curriculum">
+      <div class="sidebar-head">
+        <span data-i18n="menu"></span>
+        <button class="icon-btn close-btn" data-action="close-menu" aria-label="Close">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <nav id="side-nav" class="side-nav"></nav>
+    </aside>
+    <div class="drawer-scrim" data-action="close-menu"></div>
+
+    <main id="content" class="content" tabindex="-1"></main>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-brand"><img src="assets/img/kodla-logo.png" alt="Kodla" width="56" height="28"></span>
+      <p data-i18n="footer"></p>
+      <span class="muted">© <span id="year"></span> Kodla</span>
+    </div>
+  </footer>
+
+  <button class="to-top icon-btn" data-action="top" aria-label="Top">
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+  </button>
+
+  <div class="welcome" id="welcome" role="dialog" aria-modal="true" aria-labelledby="welcome-title" hidden>
+    <div class="welcome-card glass">
+      <img class="welcome-logo" src="assets/img/kodla-kare.png" alt="Kodla" width="96" height="96">
+      <h1 id="welcome-title">Kodla'ya hoş geldin<span>Welcome to Kodla</span></h1>
+      <p>Arduino Uno &amp; Nano için 42 adım adım bölüm.<br><span>42 step-by-step chapters for Arduino Uno &amp; Nano.</span></p>
+      <div class="welcome-label">Dil seçin · Choose your language</div>
+      <div class="welcome-langs">
+        <button class="welcome-btn" data-lang="tr">
+          <b>TR</b><span><strong>Türkçe</strong><small>Türkçe ile devam et</small></span>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <button class="welcome-btn" data-lang="en">
+          <b>EN</b><span><strong>English</strong><small>Continue in English</small></span>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <p class="welcome-foot">Dili istediğin zaman üst menüden değiştirebilirsin · You can switch anytime from the top bar</p>
+    </div>
+  </div>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/highlight.js"></script>
+  <script src="assets/js/chapters/m1.js"></script>
+  <script src="assets/js/chapters/m2.js"></script>
+  <script src="assets/js/chapters/m3.js"></script>
+  <script src="assets/js/chapters/m4.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
